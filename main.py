@@ -1,4 +1,4 @@
-import turtle as t # as就是取个别名，后续调用的t都是turtle
+import turtle as t  # as就是取个别名，后续调用的t都是turtle
 from turtle import *
 import random as r
 import time
@@ -7,15 +7,17 @@ SLEEPTIME = 2
 LINESPACE = 66
 WRITETIME = 2
 words = (
-            "中午做了一个梦",
-            "梦里有一只袜子鼓鼓",
-            "打开一看",
-            "是一只蜷成一团、呼呼大睡的小猪",
-            "大概偷了哆啦A梦的缩小枪然后躲了进去",
-            "结果被圣诞老人放到了我的枕边",
-            "这是收到过最棒的礼物",
-            "“圣诞快乐我的小香猪”",
-        )
+    "中午做了一个梦",
+    "梦里有一只袜子鼓鼓",
+    "打开一看",
+    "是一只蜷成一团、呼呼大睡的小猪",
+    "大概偷了哆啦A梦的缩小枪然后躲了进去",
+    "结果被圣诞老人放到了我的枕边",
+    "这是收到过最棒的礼物",
+    "“圣诞快乐，我的小香猪”",
+)
+
+
 def drawsnow():  # 定义画雪花的方法
     t.ht()  # 隐藏笔头，ht=hideturtle
     t.pensize(4)  # 定义笔头大小
@@ -34,8 +36,10 @@ def drawsnow():  # 定义画雪花的方法
             # t.bd(int(snowsize))  #注意没有bd=backward，但有fd=forward，小bug
             t.right(int(360 / dens))  # 转动角度
 
+
 def tree(d, s):  # 开始画树
-    if d <= 0: return
+    if d <= 0:
+        return
     forward(s)
     tree(d - 1, s * .8)
     right(120)
@@ -59,20 +63,8 @@ def drawlight():  # 定义画彩灯的方法
 
 
 def writeWords():
-    """
-    tt = t.clone()
-    tt.hideturtle()
-    tt.speed(2)  # 定义速度
-    tt.color("lemonchiffon")  # 定义字体颜色
-    tt.sety(10)
-
-    for s in words:
-        tt.write(s, align="center", font=("Comic Sans MS", 40, "bold"))
-          # 定义文字、位置、字体、大小
-
-    """
     t.pu()
-    t.sety(300)
+    t.sety(250)
     t.setx(0)
    # print("LOGING turtle pos", t.xcor(), t.ycor())
     t.color("lemonchiffon")
@@ -86,7 +78,6 @@ def writeWords():
             t.clear()
             t.sety(300)
         time.sleep(WRITETIME)
-
 
 
 n = 80.0
@@ -114,42 +105,19 @@ right(126)
 
 backward(n * 4.8)
 
-
-
 tree(14, n)
 backward(n / 2)
-"""
-# 循环画最底端的小装饰
-for i in range(50):
-    a = 200 - 400 * r.random()
-    b = 10 - 20 * r.random()
-    up()
-    forward(b)
-    left(90)
-    forward(a)
-    down()
-    if r.randint(0, 1) == 0:
-        color('tomato')
-    else:
-        color('wheat')
-    circle(2)
-    up()
-    backward(a)
-    right(90)
-    backward(b)
-"""
 
 
 t.color("dark red", "red")  # 定义字体颜色
-t.write("Merry Christmas", align="center", font=("Comic Sans MS", 40, "bold"))  # 定义文字、位置、字体、大小
+t.write("Merry Christmas", align="center", font=(
+    "Comic Sans MS", 40, "bold"))  # 定义文字、位置、字体、大小
 screensize(bg="black")
 drawsnow()  # 调用画雪花的方法
 
 time.sleep(SLEEPTIME)
 t.clear()
 writeWords()
-
-
 
 
 t.done()  # 完成,否则会直接关闭
